@@ -31,29 +31,17 @@ FROM currencies;
 > [!Note]
 > Both questions on the left and right sides of the operation must have the same types of data. The names of the fields can be different, but the results will always show the field names from the left question.
 ### **--- Comparing global economies**
+```SQL
 #### **Questions**
 1. Begin your query by selecting all fields from economies2015.
 2. Create a second query that selects all fields from economies2019.
 3. Perform a set operation to combine the two queries you just created, ensuring you do not return duplicates.
-
-```SQL
-   -- Select all fields from economies2015
-   ___    
-   -- Set operation
-   ___
-   -- Select all fields from economies2019
-   ___
-   -- ORDER BY code, year;
-```
-
-#### Answer
-```SQL
--- Select all fields from economies2015
+   
 SELECT * 
 FROM economies2015
 -- Set operation
 UNION
--- Select all fields from economies2019
+
 SELECT *
 FROM economies2019
 ORDER BY code, year;
@@ -61,8 +49,8 @@ ORDER BY code, year;
 
 ### **--Comparing two set operations**
 - Instructions 1
-  ###### Perform an appropriate set operation that determines all pairs of country code and year (in that order) from economies and populations, excluding duplicates. Order by country code and year.
 ```SQL
+-- Perform an appropriate set operation that determines all pairs of country code and year (in that order) from economies and populations, excluding duplicates. Order by country code and year.
 SELECT code, year
 FROM economies
 -- Set theory clause
@@ -72,8 +60,8 @@ FROM populations
 ORDER BY code, year;
 ```
 - Instructions 2
-  ###### Amend the query to return all combinations (including duplicates) of country code and year in the economies or the populations tables.
 ```SQL
+-- Amend the query to return all combinations (including duplicates) of country code and year in the economies or the populations tables.
 SELECT code, year
 FROM economies
 -- Set theory clause
@@ -87,3 +75,11 @@ ORDER BY code, year;
 > **UNION** only shows the **results once**, even if the information is repeated. It **removes any duplicates**.
 
 ### **--INTERSECT**
+```SQL
+-- Return all cities with the same name as a country
+SELECT name
+FROM cities
+INTERSECT
+SELECT name
+FROM countries;
+```
