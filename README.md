@@ -58,3 +58,32 @@ SELECT *
 FROM economies2019
 ORDER BY code, year;
 ```
+
+### **--Comparing two set operations**
+- Instructions 1
+  ###### Perform an appropriate set operation that determines all pairs of country code and year (in that order) from economies and populations, excluding duplicates. Order by country code and year.
+```SQL
+SELECT code, year
+FROM economies
+-- Set theory clause
+UNION
+SELECT country_code, year
+FROM populations
+ORDER BY code, year;
+```
+- Instructions 2
+  ###### Amend the query to return all combinations (including duplicates) of country code and year in the economies or the populations tables.
+```SQL
+SELECT code, year
+FROM economies
+-- Set theory clause
+UNION ALL
+SELECT country_code, year
+FROM populations
+ORDER BY code, year;
+```
+> [!Important]
+> **UNION ALL** shows all the results, including **any duplicates**.
+> **UNION** only shows the **results once**, even if the information is repeated. It **removes any duplicates**.
+
+### **--INTERSECT**
