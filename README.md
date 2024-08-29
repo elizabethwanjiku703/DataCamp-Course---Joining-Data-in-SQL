@@ -1,1 +1,1 @@
-# DataCamp-Course---Joining-Data-in-SQL
+## Joining-Data-in-SQL
