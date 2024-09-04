@@ -1,3 +1,59 @@
+## CHAPTER 1
+### Introducing Inner Joins
+#### -- Your First Join
+###### **1. Perform an inner join with the cities table on the left and the countries table on the right; you do not need to alias tables here.**
+###### **2. Join ON the country_code and code columns, making sure you identify them with the correct table.**
+```SQL
+SELECT *
+FROM cities
+INNER JOIN countries
+ON cities.country_code = countries.code;
+```
+###### **1. Complete the SELECT statement to keep three columns: the name of the city, the name of the country, and the region the country is located in (in this order).**
+###### **2. Alias the name of the city AS city and the name of the country AS country.**
+```SQL
+SELECT cities.name AS city, countries.name AS country, countries.region
+FROM cities
+INNER JOIN countries
+ON cities.country_code = countries.code;
+```
+#### -- Joining with Alias Tables
+###### **1. Start with your inner join in line 5; join the tables countries AS c (left) with economies (right), aliasing economies AS e.**
+###### **2. Next, use code as your joining field in line 7; do not use the USING command here.**
+###### **3. Lastly, select the following columns in order in line 2: code from the countries table (aliased as country_code), name, year, and inflation_rate.**
+```SQL
+SELECT c.code AS country_code, name, year, inflation_rate
+FROM countries AS c
+JOIN economies AS e
+ON c.code = e.code;
+```
+#### -- USING in Action
+> [!NOTE]
+> When both the field names being joined on are the same then you can use USING 
+###### **Use the country code field to complete the INNER JOIN with USING; do not change any alias names.**
+```SQL
+SELECT c.name AS country, l.name AS language, official
+FROM countries AS c
+INNER JOIN languages AS l
+USING(code)
+```
+#### -- Defining Relationships
+###### **1. Select the country name, aliased as country, from the countries table.**
+###### **2. Now add an alias c for the countries table and perform an inner join with the languages table, l, on the right; 
+join on code in line 8 with the USING keyword; include the language name, aliased as language.**
+###### **3. Add a WHERE clause to find how many countries speak the language 'Bhojpuri'.**
+###### **4. 
+```SQL
+SELECT c.name AS country, l.name AS language
+FROM countries AS c
+INNER JOIN languages AS l
+USING(code)
+WHERE l.name = 'Bhojpuri';
+```
+#### -- Multiple Joins
+
+
+
 ## CHAPTER 3
 ### Set Theories for SQL joins
 #### -- UNION vs UNION ALL
