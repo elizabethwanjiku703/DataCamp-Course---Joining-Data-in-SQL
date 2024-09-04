@@ -1,4 +1,3 @@
-## CHAPTER 1
 ### Introducing Inner Joins
 #### -- Your First Join
 ###### **1. Perform an inner join with the cities table on the left and the countries table on the right; you do not need to alias tables here.**
@@ -51,10 +50,27 @@ USING(code)
 WHERE l.name = 'Bhojpuri';
 ```
 #### -- Multiple Joins
-
-
-
-## CHAPTER 3
+###### **1. Do an inner join of countries AS c (left) with populations AS p (right), on code. Select name and fertility_rate.**
+###### **2. Chain an inner join with the economies table AS e, on code. Select year and unemployment_rate from the economies table.**
+```SQL
+SELECT name, e.year, fertility_rate, unemployment_rate
+FROM countries AS c
+INNER JOIN populations AS p
+ON c.code = p.country_code
+INNER JOIN economies AS e
+ON c.code = e.code;
+```
+###### **3. Modify your query so that you are joining to economies on year as well as code.**
+```SQL
+SELECT name, e.year, fertility_rate, unemployment_rate
+FROM countries AS c
+INNER JOIN populations AS p
+ON c.code = p.country_code
+INNER JOIN economies AS e
+ON c.code = e.code
+-- Add an additional joining condition such that you are also joining on year
+AND p.year = e.year ;
+```
 ### Set Theories for SQL joins
 #### -- UNION vs UNION ALL
 ###### **What result will the following SQL query produce?**
@@ -103,7 +119,6 @@ SELECT *
 FROM economies2019
 ORDER BY code, year;
 ```
-
 ### **--Comparing two set operations**
 - Instructions 1
 ```SQL
